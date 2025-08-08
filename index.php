@@ -457,7 +457,7 @@ require_once __DIR__ . '/app/core/constants.php';
 <!-- Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <!-- Custom JS -->
-<script src="<?= BASE_URL ?>/public/assets/js/app.js"></script>
+<script src="<?= BASE_URL ?>/public/assets/js/script.js"></script>
 
 </body>
 </html>
