@@ -1,0 +1,469 @@
+/* Import Yekan Bakh Font */
+@font-face {
+    font-family: 'Yekan Bakh';
+    font-style: normal;
+    font-weight: 100 900;
+    src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn-Variable.woff2') format('woff2-variations');
+    font-display: swap;
+}
+
+:root {
+    --sidebar-width: 280px;
+    --sidebar-bg: #1e1e1e;
+    --main-bg: #121212;
+    --border-color: #333;
+}
+
+body {
+    font-family: 'Yekan Bakh', 'Vazirmatn', sans-serif;
+    background-color: var(--main-bg) !important;
+    color: #e0e0e0;
+}
+
+/* --- Sidebar Styles --- */
+.sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: var(--sidebar-bg);
+    border-left: 1px solid var(--border-color);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1030; /* Higher than main content */
+}
+.sidebar-header {
+    padding: 1.25rem;
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+}
+.sidebar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+.sidebar-nav .nav-link {
+    color: #adb5bd;
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    align-items: center;
+}
+.sidebar-nav .nav-link i {
+    margin-left: 0.75rem;
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+}
+.sidebar-nav .nav-link:hover, .sidebar-nav .nav-link.active {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+.sidebar-nav .nav-link.active {
+    font-weight: 600;
+}
+.sidebar-nav .collapse .nav-link {
+    padding-right: 2.5rem; /* Indent sub-items */
+    font-size: 0.9rem;
+}
+.sidebar-nav .nav-link .bi-chevron-down {
+    transition: transform 0.2s ease-in-out;
+    font-size: 0.8rem;
+}
+.sidebar-nav .nav-link[aria-expanded="true"] .bi-chevron-down {
+    transform: rotate(180deg);
+}
+
+
+/* --- Main Content Wrapper --- */
+.main-content-wrapper {
+    margin-right: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+    transition: margin-right 0.3s ease-in-out;
+}
+.main-header {
+    background-color: #1e1e1e;
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    align-items: center;
+}
+.page-title {
+    color: #fff;
+}
+
+
+/* --- Responsive Styles --- */
+@media (max-width: 991.98px) {
+    .sidebar {
+        transform: translateX(var(--sidebar-width)); /* Hide sidebar off-screen */
+    }
+    .sidebar.open {
+        transform: translateX(0);
+    }
+    .main-content-wrapper {
+        width: 100%;
+        margin-right: 0;
+    }
+}
+
+/* --- Other Styles (retained and adjusted) --- */
+.card {
+    background-color: #1e1e1e !important;
+    border: 1px solid var(--border-color);
+}
+.card-header {
+    background-color: #252525 !important;
+    border-bottom: 1px solid var(--border-color);
+}
+.form-control, .form-select {
+    background-color: #2a2a2a; border: 1px solid #444; color: #fff;
+}
+.form-control:focus, .form-select:focus {
+    background-color: #2a2a2a; border-color: #0d6efd; box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); color: #fff;
+}
+.form-control::placeholder { color: #888; }
+.table-dark { --bs-table-bg: #1e1e1e; --bs-table-border-color: #333; }
+.table-striped > tbody > tr:nth-of-type(odd) > * { --bs-table-accent-bg: #252525; }
+.table-hover > tbody > tr:hover > * { --bs-table-accent-bg: #3a3a3a; }
+canvas { max-height: 120px; width: 100% !important; }
+
+/* ==================== CREATIVE INSIGHTS BOXES ==================== */
+.insights-grid {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+/* Base card styling */
+.overview-card,
+.latest-transactions-card {
+    background: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+}
+
+.overview-card:hover,
+.latest-transactions-card:hover {
+    box-shadow: none;
+}
+
+.overview-card h2,
+.latest-transactions-card h2 {
+    margin-bottom: 1.5rem;
+    color: var(--color-dark);
+}
+
+/* Styling for Overview Card */
+.overview-items {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.overview-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--color-light);
+    padding: 1.2rem;
+    border-radius: var(--border-radius-3);
+}
+
+.overview-item .icon-wrapper {
+    font-size: 2rem;
+    padding: 1rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+}
+
+/* Color variations for overview items */
+.overview-item.today .icon-wrapper {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-variant));
+}
+.overview-item.week .icon-wrapper {
+    background: linear-gradient(135deg, var(--color-warning), #ffcd6b);
+}
+.overview-item.top-category .icon-wrapper {
+    background: linear-gradient(135deg, var(--color-success), #5ddea2);
+}
+
+.overview-item .item-details small {
+    color: var(--color-info-dark);
+    font-size: 0.8rem;
+}
+
+.overview-item .item-details h3 {
+    font-size: 1.6rem;
+    margin-top: 0.3rem;
+    color: var(--color-dark);
+}
+
+/* Styling for Latest Transactions Card */
+.transactions-list .transaction-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--color-light);
+    transition: background 300ms ease;
+    margin: 0 -1.6rem; /* Extend to card edges */
+    padding: 1.2rem 1.6rem;
+}
+
+.transactions-list .transaction-item:hover {
+    background: var(--color-light);
+}
+
+.transactions-list .transaction-item:last-child {
+    border-bottom: none;
+}
+
+.transaction-item .icon {
+    font-size: 1.5rem;
+    padding: 0.8rem;
+    border-radius: 50%;
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Category Specific Icon Gradients */
+.transaction-item .icon.transport { background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); }
+.transaction-item .icon.food { background: linear-gradient(135deg, #d4145a 0%, #fbb03b 100%); }
+.transaction-item .icon.entertainment { background: linear-gradient(135deg, #00b09b 0%, #96c93d 100%); }
+.transaction-item .icon.misc { background: linear-gradient(135deg, #f09819 0%, #edde5d 100%); }
+
+.transaction-item .transaction-details {
+    flex-grow: 1;
+}
+
+.transaction-item .transaction-details .title {
+    font-weight: 500;
+    color: var(--color-dark);
+}
+
+.transaction-item .transaction-details .date {
+    font-size: 0.8rem;
+    color: var(--color-info-dark);
+    margin-top: 0.2rem;
+}
+
+.transaction-item .amount {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--color-danger);
+}
+
+.transactions-list .no-data {
+    text-align: center;
+    padding: 2rem;
+    color: var(--color-info-dark);
+}
+/* Styling for the new Weekly Expenses Card */
+.weekly-expenses-list ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.weekly-expense-item {
+    margin-bottom: 1.2rem; /* فاصله بین روزها */
+}
+
+.weekly-expense-item:last-child {
+    margin-bottom: 0;
+}
+
+.weekly-expense-item .day-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.4rem;
+}
+
+.weekly-expense-item .day-name {
+    font-weight: 500;
+    color: #e0e0e0;
+}
+
+.weekly-expense-item .day-amount {
+    font-size: 0.9rem;
+    color: #cdd2d6;
+    font-family: 'Vazirmatn', sans-serif; /* اطمینان از نمایش صحیح اعداد فارسی */
+}
+
+.weekly-expense-item .progress {
+    background-color: #3e4451; /* رنگ پس‌زمینه نوار پیشرفت */
+}
+/* ================================================== */
+/*          Authentication Pages Styling (auth.css)   */
+/* ================================================== */
+
+/* --- General Body and Layout --- */
+body.auth-body {
+    background-color: #121417; /* همان رنگ پس‌زمینه داشبورد */
+    color: #e0e0e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Vazirmatn', sans-serif;
+    direction: rtl;
+}
+
+.auth-container {
+    background-color: #1f2228;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+    border: 1px solid #343a40;
+}
+
+/* --- Header and Logo --- */
+.auth-header {
+    margin-bottom: 2rem;
+}
+
+.auth-header .logo {
+    font-size: 2.5rem;
+    color: #0d6efd; /* رنگ اصلی برند */
+    margin-bottom: 0.5rem;
+}
+
+.auth-header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.auth-header p {
+    font-size: 0.95rem;
+    color: #adb5bd;
+}
+
+
+/* --- Form Elements --- */
+.auth-form .form-group {
+    margin-bottom: 1.25rem;
+    text-align: right;
+}
+
+.auth-form .form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #cdd2d6;
+}
+
+.auth-form .form-control {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background-color: #2c3038;
+    border: 1px solid #495057;
+    border-radius: 0.5rem;
+    color: #e0e0e0;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.auth-form .form-control:focus {
+    background-color: #2c3038;
+    color: #ffffff;
+    border-color: #0d6efd;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
+}
+
+.auth-form .btn-primary {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.auth-form .btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+/* --- Footer Link --- */
+.auth-footer-link {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.auth-footer-link a {
+    color: #0d6efd;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.auth-footer-link a:hover {
+    color: #3f8aff;
+    text-decoration: underline;
+}
+
+/* --- OTP Specific Styles --- */
+.otp-inputs-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    direction: ltr; /* Important for input order */
+    margin: 2rem 0;
+}
+
+.otp-input {
+    width: 45px;
+    height: 50px;
+    font-size: 1.5rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    background-color: #2c3038;
+    border: 1px solid #495057;
+    color: #e0e0e0;
+    /* Hide the number input spinners */
+    -moz-appearance: textfield;
+}
+
+.otp-input::-webkit-outer-spin-button,
+.otp-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.otp-input:focus {
+    border-color: #0d6efd;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
+}
+
+.resend-code-container {
+    font-size: 0.9rem;
+    color: #adb5bd;
+}
+
+.resend-code-container .resend-link {
+    color: #0d6efd;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.resend-code-container .resend-link:hover {
+    text-decoration: underline;
+}
