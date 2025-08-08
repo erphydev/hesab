@@ -88,7 +88,7 @@
     <h2>تایید کد یکبار مصرف</h2>
     <p>کد ارسال شده را وارد کنید.</p>
     <form method="post">
-        <input type="text" name="otp" maxlength="6" inputmode="numeric" placeholder="مثلاً 123456">
+        <input type="text" name="otp" maxlength="6" inputmode="numeric" placeholder="-----">
         <button type="submit">تایید</button>
     </form>
     <div class="timer" id="timer">ارسال مجدد کد تا <span id="countdown">30</span> ثانیه</div>
