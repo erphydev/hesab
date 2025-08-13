@@ -2,7 +2,7 @@
 $config = require __DIR__ . '/../../config/config.php';
 
 try {
-	$pdo = new PDO(
+	$conn = new PDO(
 		"mysql:host={$config['db_host']};dbname={$config['db_name']};charset=utf8mb4",
 		$config['db_user'],
 		$config['db_pass'],
